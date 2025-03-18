@@ -4,7 +4,7 @@ import connectToDatabase from "@/lib/mongodb";
 
 export async function GET() {
   try {
-   const connection =  await connectToDatabase();
+     await connectToDatabase();
 
    if (!mongoose.connection.db) {
       throw new Error("Database connection is undefined");
