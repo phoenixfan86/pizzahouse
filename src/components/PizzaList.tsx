@@ -9,7 +9,7 @@ const PizzaList = ({ pizzas }: { pizzas: PizzaProps[] }) => {
   }
 
   return (
-    <section id="pizza" className=" w-full h-auto flex-box flex-wrap gap-x-2 gap-y-7 md:p-10">
+    <section id="pizza" className=" w-full h-auto flex-box flex-wrap gap-x-2 gap-y-7 md:px-10 md:py-2">
       {pizzas.map((pizza) => (
         <PizzaItem
           key={pizza._id}
