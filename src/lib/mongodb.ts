@@ -5,6 +5,7 @@ interface MongooseCache {
   promise: Promise<mongoose.Connection> | null;
 }
 
+// eslint-disable-next-line no-var
 declare global {
   var mongooseCache: MongooseCache | undefined;
 }
