@@ -4,7 +4,11 @@ import connectToDatabase from "@/lib/mongodb";
 
 export async function GET() {
   try {
-    await connectToDatabase();
+   const connection =  await connectToDatabase();
+
+   if (!mongoose.connection.db) {
+      throw new Error("Database connection is undefined");
+    }
     
     const collections = await mongoose.connection.db.listCollections().toArray();
     

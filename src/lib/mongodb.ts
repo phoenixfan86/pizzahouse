@@ -6,16 +6,16 @@ interface MongooseCache {
 }
 
 declare global {
-  const mongooseCache: MongooseCache | undefined;
+  var mongooseCache: MongooseCache | undefined;
 }
+
+const cached: MongooseCache = globalThis.mongooseCache || { conn: null, promise: null };
 
 const MONGODB_URI = process.env.MONGODB_URI!;
 
 if (!MONGODB_URI) {
   throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
 }
-
-const cached: MongooseCache = globalThis.mongooseCache || { conn: null, promise: null };
 
 async function connectToDatabase() {
   if (cached.conn) return cached.conn;
