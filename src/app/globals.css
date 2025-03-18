@@ -1,8 +1,20 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap');
 
 :root {
   --background: #ffffff;
+  --orange-first: #FD5C2E;
+  --orange-second: #FE7122;
   --foreground: #171717;
+  --dark-color:#24262F;
+  --second-dark: #3E404A;
+  --description-color:#969AB0;
+}
+@theme{
+  --color-orange-first: var(--orange-first);
+  --color-orange-second: var(--orange-second);
+  --text-orange-first: var(--orange-first);
+  --font-signika: 'Signika', sans-serif;
 }
 
 @theme inline {
@@ -22,5 +34,69 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-signika), sans-serif;
+}
+
+.base-gradient{
+ @apply bg-gradient-to-r from-orange-first to-orange-second
+}
+
+.order-ring{
+  @apply  size-5 rounded-full border-2 text-white text-center text-[13px] 
+}
+
+.navbar{
+  @apply absolute top-14 left-1 mt-2 min-w-40 p-2 rounded-xl ring-inset ring-1 ring-zinc-50/5 isolate opacity-0 invisible transition-[opacity,transform,filter] md:static md:flex md:items-center md:mt-0 md:opacity-100 md:visible duration-300 scale-95 md:backdrop-blur-2xl bg-gradient-to-r from-orange-first to-orange-second
+}
+
+.navbar.active{
+  @apply opacity-100 scale-100 visible blur-none 
+}
+
+.navbar .active-box{
+  @apply absolute bg-zinc-50/40 md:bg-transparent md:border-b-3 md:border-b-zinc-50/80 rounded-lg md:rounded-sm md:scale-x-35 -z-10 transition-[top,left] duration-500
+
+}
+
+.nav-link{
+  @apply flex items-center h-9 px-4 text-base font-semibold tracking-wide text-zinc-50/80 hover:text-zinc-50 focus:text-zinc-800 transition-colors 
+}
+
+.menu-btn{
+  @apply size-10 bg-zinc-50/10 rounded-md backdrop-blur-2xl md:hidden px-2 flex items-center justify-center
+}
+
+.price{
+  @apply text-sm md:text-lg font-semibold font-normal;
+  color: var(--orange-first)
+}
+
+.title{
+  @apply text-sm md:text-xl font-semibold;
+color: var(--dark-color);
+}
+
+.description{
+  @apply text-xs md:text-sm  text-center;
+  color: var(--description-color);
+}
+
+.flex-box{
+  @apply flex items-center justify-center
+}
+
+.flex-box-btw{
+  @apply flex items-center justify-between
+}
+
+.btn{
+  @apply min-w-20 h-7 md:h-8 mr-2  bg-white hover:bg-yellow-500 rounded-[18px] text-(--second-dark) hover:text-white text-xs md:text-base font-semibold hover:drop-shadow-lg transition-all duration-300
+}
+
+.add-btn{
+  @apply absolute bottom-0 left-[50%] -translate-x-1/2 translate-y-1/2 min-w-28 md:min-w-30 h-7 md:h-8 bg-yellow-500 hover:bg-white rounded-[18px] text-white hover:text-(--dark-color) text-xs md:text-base font-semibold drop-shadow-lg transition-all duration-300
+}
+
+.badge{
+  @apply fixed bottom-3 right-15 z-50 bg-(--dark-color) rounded-3xl opacity-85 text-base md:text-lg font-semibold text-white
 }
